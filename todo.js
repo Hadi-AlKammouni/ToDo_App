@@ -21,13 +21,17 @@ for(let i=0; i<localStorage.length; i++){
     // Getting the data from the local storage
     let x= localStorage.getItem(`task ${task_number}`);
     let y = JSON.parse(x);
+    console.log(y)
     task_number++;
-        
+
+    console.log(y.rowid)
+
     // Putting the values of each task in the array to iterate over them for each row
     values=[id_counter,y.Title,y.Description,y.Importance,y.Done,y.CreatedAt];
 
     // Creating new row in the table + Filling the data in the columns
     let new_row = document.createElement("tr");
+    new_row.id = tr_id_a + tr_id_b;
     item_lists.append(new_row);
     for (let i=0; i<6; i++){
         new_task = document.createElement("td");
@@ -56,24 +60,28 @@ add_todo.click(function(){
         added_values.push("False");
         added_values.push(new Date())
         
+        // Creating new row in the table
+        let new_row = document.createElement("tr");
+        // Assigning an id for each row
+        new_row.id = tr_id_a + tr_id_b;
+        item_lists.append(new_row);
+
         var obj = { 
             "Title":title.val(), 
             "Description":description.val(), 
             "Importance":importance.val(),
             "Done":"False",
-            "CreatedAt":new Date()
+            "CreatedAt":new Date(),
+            "rowid":new_row.id
         };
+
         var myJSON = JSON.stringify(obj);
         localStorage.setItem(`task ${id_counter}`, myJSON)
         console.log(myJSON)
         var x = JSON.parse(myJSON)
         console.log(x)
   
-        // Creating new row in the table
-        let new_row = document.createElement("tr");
-        // Assigning an id for each row
-        new_row.id = tr_id_a + tr_id_b;
-        item_lists.append(new_row);
+        
 
         // For loop to add the data into the new row
         for (let i=0;i<added_values.length;i++){
