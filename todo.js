@@ -189,3 +189,33 @@ $("#clear-todo").click(function(){
 })
 
 //=================================================
+
+// Updating feature (not working 100%)
+$("#edit-old-todo").click(function(){
+
+    let row_to_update = prompt("NOTHING WILL HAPPEN IF THE NUMBER DOESN'T EXIST!!                    Insert the id number only of the row which you want to update");
+    let column_to_update = prompt("Enter: 1 to update the title / 2 to update the description / 3 to update the improtance / 4 to update the status");
+
+    let row_values = localStorage.getItem(`task ${row_to_update}`)
+    let json_row_values = JSON.parse(row_values);
+    
+    if(column_to_update == 1){
+        let updated_title = prompt("Enter the new title");
+        localStorage.setItem(`${json_row_values.Title}`, updated_title)
+    }
+    else if(column_to_update == 2){
+        let updated_description = prompt("Enter the new description");
+        localStorage.setItem(`${json_row_values.Description}`, updated_description)
+    }
+    else if(column_to_update == 3){
+        let updated_importance = prompt("Enter the new importance");
+        localStorage.setItem(`${json_row_values.Importance}`, updated_importance)
+    }
+    else if(column_to_update == 4){
+        let updated_done = prompt("Enter the new done");
+        localStorage.setItem(`${json_row_values.Done}`, updated_done)
+    }
+    else{
+        alert("NOTHING CHANGED! You didn't enter a number between 1 and 4.")
+    }
+});
