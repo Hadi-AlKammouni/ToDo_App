@@ -8,6 +8,8 @@ let item_lists = $("#item-lists");
 let add_new = $("#add-new-todo")
 let add_section = $("#add-section")
 
+let tr_id_a = "row"
+let tr_id_b = 1;
 let id_counter = 1;
 let added_values=[];
 let task_number = 1;
@@ -69,6 +71,8 @@ add_todo.click(function(){
   
         // Creating new row in the table
         let new_row = document.createElement("tr");
+        // Assigning an id for each row
+        new_row.id = tr_id_a + tr_id_b;
         item_lists.append(new_row);
 
         // For loop to add the data into the new row
@@ -84,6 +88,7 @@ add_todo.click(function(){
         description.val('');
         id_counter++;
         added_values=[];
+        tr_id_b++;
 
         add_section.css("display", "none")
         alert("Task was succefully added!")
