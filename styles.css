@@ -69,3 +69,18 @@
 #add-todo:active{
     background-color: #ffcc00;
 }
+
+/*Table*/
+table{
+    width: 100%;
+    margin-top: 20px;
+}
+table, th, td {
+    border: 1px solid white;
+    border-collapse: collapse;
+    font-size: 20px;
+    text-align: center;
+}
+th, td {
+    background-color: #ffcc00;
+}
