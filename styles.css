@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#header{
+    text-align: center;
+    background-color: #ffcc00;
+    height: 100px;
+}
+
+#header-title{
+    padding-top: 25px;
+}
