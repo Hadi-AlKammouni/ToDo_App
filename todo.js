@@ -5,6 +5,9 @@ let add_todo = $("#add-todo");
 let importance = $("#importance");
 let item_lists = $("#item-lists");
 
+let add_new = $("#add-new-todo")
+let add_section = $("#add-section")
+
 let id_counter = 1;
 let added_values=[];
 let task_number = 1;
@@ -81,6 +84,9 @@ add_todo.click(function(){
         description.val('');
         id_counter++;
         added_values=[];
+
+        add_section.css("display", "none")
+        alert("Task was succefully added!")
     }
     
     else{
@@ -96,4 +102,8 @@ add_todo.click(function(){
         alert("Both, title and description must be filled");
     }
 
+});
+
+add_new.click(function(){
+    add_section.css("display", "block")
 });
