@@ -7,9 +7,28 @@
 #header{
     text-align: center;
     background-color: #ffcc00;
-    height: 100px;
+    height: 160px;
 }
 
 #header-title{
-    padding-top: 25px;
+    font-size: 46px;
+    margin-bottom: 25px;
+    padding-top: 20px;
+}
+
+#add-new-todo, #edit-old-todo{
+    background-color: white;
+    color: black;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+#add-new-todo:hover, #edit-old-todo:hover{
+    cursor: pointer;  
+    background-color: black;
+    color: white;
+    border-color: white;
+    border-width: 4px;
 }
