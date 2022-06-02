@@ -13,6 +13,31 @@
         <button id="add-new-todo"> Add New ToDo</button>
         <button id="edit-old-todo"> Edit ToDo</button>
     </header>
-    
+
+    <!-- Section to add new todo -->
+    <!-- <section id="add-section" style="display: none;"> -->
+    <section id="add-section">    
+        <div>
+            <h2>ToDo Title</h2>
+            <textarea id="title" rows="5" cols="70" placeholder="Insert the title here.."></textarea>
+        </div>
+        <div>
+            <h2>ToDo Description</h2>
+            <textarea id="description" rows="5" cols="70" placeholder="Insert the description here.."></textarea>
+        </div>
+        <div>
+            <h2>ToDo Importance</h2>
+            <select id="importance" title="(1: Least => 5: Most)">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <div>
+            <button id="add-todo"> Add To List</button>
+        </div>
+    </section>
 </body>
 </html>
