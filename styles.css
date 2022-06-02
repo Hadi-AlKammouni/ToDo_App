@@ -84,3 +84,40 @@ table, th, td {
 th, td {
     background-color: #ffcc00;
 }
+
+/*Media Query*/
+@media only screen and (max-width:1200px){
+    #title, #description{
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width:720px){
+    #add-todo{
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width:615px){
+    #header>div{
+        display: flex; 
+    }
+}
+
+@media only screen and (max-width:500px){
+    #header>div{
+        display: flex;
+        margin: 0% 25%;
+        flex-direction: column;
+        width: fit-content; 
+    }
+    #header{    
+        height: 350px;
+    }
+    #add-section h2{
+        font-size: 80%;
+    }
+    #importance{
+        width: 60%;
+    }
+}
