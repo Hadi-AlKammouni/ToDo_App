@@ -10,6 +10,17 @@ let add_section = $("#add-section")
 
 let tr_id_a = "row"
 let tr_id_b = 1;
+
+// To assign ids for each data
+let td_title_a = "title"
+let td_title_b = 1;
+let td_description_a = "description"
+let td_description_b = 1;
+let td_importance_a = "importance"
+let td_importance_b = 1;
+let td_done_a = "done"
+let td_done_b = 1;
+
 let id_counter = 1;
 let added_values=[];
 let task_number = 1;
@@ -31,17 +42,24 @@ for(let i=0; i<localStorage.length; i++){
     let y = JSON.parse(x);
 
     // Putting the values of each task in the array to iterate over them for each row
-    values=[id_counter,y.Title,y.Description,y.Importance,y.Done,y.CreatedAt];
+    values=[id_counter,y.Title,y.Description,y.Importance,y.Done,y.CreatedAt]
+    ids_of_values=["",y.titleid,y.descriptionid,y.importanceid,y.doneid,""];
 
     // Creating new row in the table + Filling the data in the columns
     let new_row = document.createElement("tr");
     new_row.id = tr_id_a + tr_id_b;
     item_lists.append(new_row);
+
     for (let i=0; i<6; i++){
         new_task = document.createElement("td");
+        new_task.id =ids_of_values[i]
         new_task.append(document.createTextNode(values[i]));
         new_row.append(new_task);
     }
+    td_description_b++;
+    td_title_b++;
+    td_importance_b++;
+    td_done_b++;
     tr_id_b++;
     task_number++; // To go to the next task in the local storage
     id_counter++; // To auto increment the id
@@ -74,6 +92,14 @@ add_todo.click(function(){
         new_row.id = tr_id_a + tr_id_b;
         item_lists.append(new_row);
         tr_id_b++;
+        
+        // To assign ids of each specific data
+        let new_title = td_title_a + td_title_b;
+        let new_description = td_description_a + td_description_b;
+        let new_importance = td_importance_a + td_importance_b;
+        let new_done = td_done_a + td_done_b;
+        td_array_value = ["",new_title, new_description, new_importance, new_done,""]
+
         var obj = { 
             "Title":title.val(), 
             "Description":description.val(), 
@@ -82,21 +108,31 @@ add_todo.click(function(){
             "CreatedAt":new Date(),
             "rowid":new_row.id
         };
-        
+    
+        td_array_key = ["", "titleid", "descriptionid", "importanceid", "doneid", ""]
+
+        // For loop to add the data into the new row
+        for (let i=0;i<added_values.length;i++){
+            // Creating new detail upon each iteration
+            let new_task = document.createElement("td");
+            new_task.id = td_array_value[i] // Assigning ids of each specific data
+            obj[td_array_key[i]] = td_array_value[i]
+            new_task.append(document.createTextNode(added_values[i]));
+            new_row.append(new_task);
+        };
+
         var myJSON = JSON.stringify(obj);
         localStorage.setItem(`task ${id_counter}`, myJSON);
         console.log(myJSON);
         var x = JSON.parse(myJSON);
         console.log(x);
-  
-        // For loop to add the data into the new row
-        for (let i=0;i<added_values.length;i++){
-            // Creating new detail upon each iteration
-            let new_task = document.createElement("td");
-            new_task.append(document.createTextNode(added_values[i]));
-            new_row.append(new_task);
-        };
-        
+
+        // To assign ids of each specific data
+        td_description_b++;
+        td_title_b++;
+        td_importance_b++;
+        td_done_b++;
+
         // Reseting the values of the input fields + the array to fill them again
         title.val('');
         description.val('');
