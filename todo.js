@@ -38,7 +38,7 @@ for(let i=0; i<localStorage.length; i++){
         new_task.append(document.createTextNode(values[i]));
         new_row.append(new_task);
     }
-
+    tr_id_b++;
     id_counter++; // To auto increment the id
 }
 
@@ -65,7 +65,7 @@ add_todo.click(function(){
         // Assigning an id for each row
         new_row.id = tr_id_a + tr_id_b;
         item_lists.append(new_row);
-
+        tr_id_b++;
         var obj = { 
             "Title":title.val(), 
             "Description":description.val(), 
@@ -74,7 +74,7 @@ add_todo.click(function(){
             "CreatedAt":new Date(),
             "rowid":new_row.id
         };
-
+        
         var myJSON = JSON.stringify(obj);
         localStorage.setItem(`task ${id_counter}`, myJSON)
         console.log(myJSON)
@@ -96,7 +96,7 @@ add_todo.click(function(){
         description.val('');
         id_counter++;
         added_values=[];
-        tr_id_b++;
+        
 
         add_section.css("display", "none")
         alert("Task was succefully added!")
